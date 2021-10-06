@@ -1,6 +1,6 @@
 # General Notes
 
-## personal notes
+## My personal Notes
 
 ### PostgresQL
 

@@ -1,4 +1,4 @@
-<h1 align="center"> Hola, welcome to basic-api-server 👋</h1>
+<h1 align="center"> Hola, welcome to api-server 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/antoni909/server-deployment-practice#readme" target="_blank">
@@ -14,9 +14,9 @@
 
 > Build a REST API using Express, by creating a proper series of endpoints that perform CRUD operations on a database, using the REST standard
 
-### 🏠 [GitHub Repo](https://github.com/antoni909/basic-api-server)
+### 🏠 [GitHub Repo](https://github.com/antoni909/api-server)
 
-### ✨ [Heroku Production Deployment](https://basic-server-api.herokuapp.com/)
+### ✨ [Heroku Production Deployment](https://api-server.herokuapp.com/)
 
 ### Techonology used in this Project
 
@@ -33,26 +33,58 @@
 [Express and Express Router](https://expressjs.com/en/4x/api.html#router.route)
 [Sequelize](https://sequelize.org/master/)
 [JEST](https://archive.jestjs.io/docs/en/getting-started.html)
+[SuperTest](https://www.npmjs.com/package/supertest)
 
 ### Project Details
 
-[Home Repo](https://github.com/antoni909/basic-api-server)
+[Home Repo](https://github.com/antoni909/api-server)
 
-[PR - dev to main](https://github.com/antoni909/basic-api-server/pull/5)
+[PR - dev to main](https://github.com/antoni909/api-server/pull/2)
 
-[Assignment Instructions - Lab 03](./assignment.md);
+[Assignment Instructions - Lab 04](./assignment.md);
 
 [Research Notes](./notes.md)
 
 ### Routes
 
-/people
+CRUD Operation: Create
+REST Method: POST
+Path: /food
+    - Input: JSON Object in the Request Body
+    - Returns: The record that was added to the database.
+    - You must generate an ID and attach it to the object.
+    - You should verify that only the fields you define get saved as a record.
+    - Get All Records
 
-/food
+CRUD Operation: Read
+REST Method: GET
+Path: /food
+    - Returns: An array of objects, each object being one entry from your database.
+    - Get One Record
+
+CRUD Operation: Read
+REST Method: GET
+Path: /food/1
+    - Returns: The object from the database, which has the id matching that which is in the path.
+    - Update A Record
+
+CRUD Operation: Update
+REST Method: PUT
+Path: /food/1
+    - Input: JSON Object in the Request Body
+    - Returns: The object from the database, which has the id matching that which is in the path, with the updated/changed data.
+    - You should verify that only the fields you define get saved as a record.
+    - Delete A Record
+
+CRUD Operation: Destroy
+REST Method: DELETE
+Path: /food/1
+    - Returns: The record from the database as it exists after you delete it (i.e. null).
+
 ### Install
 
 ```sh
-npm install
+npm i
 ```
 
 ### Usage
@@ -68,7 +100,7 @@ npm run test
 ```
 ### UML
 
-![api-server](./assets/uml.jpg)
+![UML api-server](./assets/uml.jpg)
 ### Author
 
 👤 **Lorenzo Ortega**
