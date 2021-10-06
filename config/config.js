@@ -12,7 +12,7 @@ module.exports = {
     "password": "password",
     "database": "test",
     "host": '127.0.0.1',
-    "dialect": "sqlite:memory"
+    "dialect": "sqlite:memory:"
   },
   "production": {
     "username": process.env.PROD_DB_USER,
