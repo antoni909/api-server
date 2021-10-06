@@ -1,6 +1,10 @@
 # General Notes
 
-## My personal Notes
+## My personal Trouble Shootig notes
+
+- BUG: Connection Error Sequelize: failed to connect to database: 'store'
+- FIX:
+    go into my psql and CREATE DATABASE store;
 
 ### PostgresQL
 

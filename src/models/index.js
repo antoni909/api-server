@@ -1,13 +1,19 @@
 'use strict';
+
 // imports
 require('dotenv').config();
-
+const { Sequelize, DataTypes } = require('sequelize');
 const Collection = require('../utils/collections-class');
-const beer = require('../models/beer')
+const beer = require('../models/beer');
 
 // connect to a db 
-const DATABASE_URL = process.env.NODE_ENV === 'test'? 'sqlite:memory' : process.env.DATABASE_URL;
-const { Sequelize, DataTypes } = require('sequelize');
+const POSTGRES_URI = 
+    process.env.NODE_ENV === 'test'
+    ? 'sqlite:memory' 
+    : process.env.DATABASE_URL;
+
+console.log('***POSTGRES_URI : ', POSTGRES_URI)
+
 let sequelizeOptions = process.env.NODE_ENV === 'production'
     ? {
         dialectOptions: {
@@ -18,8 +24,13 @@ let sequelizeOptions = process.env.NODE_ENV === 'production'
         }
     }
     : {};
-// Create a working model
-let sequelize = new Sequelize(DATABASE_URL, sequelizeOptions);
+
+console.log('*** sequlizeOptions: ', sequelizeOptions)
+
+// Create sequlize instance
+let sequelize = new Sequelize(POSTGRES_URI, sequelizeOptions);
+// Create Working Model
+
 let beerModel = beer(sequelize, DataTypes);
 let collectionBeer = new Collection('beer', beerModel  );
 
