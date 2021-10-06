@@ -8,14 +8,12 @@ const app = express();
 // Middleware Imports
 const notFoundHandler = require('./error-handlers/404');
 const serverErrorHandler = require('./error-handlers/500');
-const personRouter = require('./routes/person')
-const foodRouter = require('./routes/food')
+const beerRouter = require('./routes/beer');
 
 // allows express to consume json
 app.use(express.json());
 //Resource Routers
-app.use(personRouter);
-app.use(foodRouter);
+app.use(beerRouter);
 
 // App level middleware
 
