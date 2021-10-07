@@ -10,9 +10,13 @@ const Beer = (sequelize, DataTypes) => sequelize.define('Beer',{
     allowNull: false,
   },
   size: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
     allowNull: false,
-  }
+  },
+  // hasBeenSipped: {
+  //   type: DataTypes.BOOLEAN,
+  //   allowNull: false,
+  // }
 });
 
 module.exports = Beer;

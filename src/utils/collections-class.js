@@ -4,7 +4,9 @@ class Collection{
   constructor(name,model){
     this.name = name;
     this.model = model;
+    console.log(this.model)
   }
+
 
   async create(json){
     try{
@@ -14,29 +16,30 @@ class Collection{
 
     }catch(e){
 
-      console.log(`ERR @ create model: ${this.model} with e: ${e}`)
+      console.log(` *** ERR @ create model: ${this.model} with e: ${e}`)
       return e;
     
     }
   }
 
   async read(id, options = {}){
-
+    let record;
+    console.log('id:',id, 'options: ', options)
     try{
       
-      if(!id){
-        let record = await this.model.findAll(options);
-        return record;
+      if(id){
+        options['where'] = { id };
+        record = await this.model.findOne(options);
+        return record; 
 
       }else{
-        options['where'] = { id };
-        let record = await this.model.findOne(options);
-        return record; 
+        let record = await this.model.findAll(options);
+        return record;
       }
 
     }catch(e){
 
-      console.log(`ERR @ read model: ${this.model} with e: ${e}`)
+      console.log(`*** ERR @ read model: ${this.model} with e: ${e}`)
       return e;
     
     }

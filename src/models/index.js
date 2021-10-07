@@ -12,7 +12,7 @@ const POSTGRES_URI =
     ? 'sqlite:memory' 
     : process.env.DATABASE_URL;
 
-console.log('***POSTGRES_URI : ', POSTGRES_URI)
+console.log(' *** POSTGRES_URI : ', POSTGRES_URI)
 
 let sequelizeOptions = process.env.NODE_ENV === 'production'
     ? {
@@ -25,14 +25,11 @@ let sequelizeOptions = process.env.NODE_ENV === 'production'
     }
     : {};
 
-console.log('*** sequlizeOptions: ', sequelizeOptions)
-
-// Create sequlize instance
 let sequelize = new Sequelize(POSTGRES_URI, sequelizeOptions);
-// Create Working Model
 
 let beerModel = beer(sequelize, DataTypes);
-let collectionBeer = new Collection('beer', beerModel  );
+
+let collectionBeer = new Collection('Beer', beerModel  );
 
 module.exports = {
   db: sequelize,

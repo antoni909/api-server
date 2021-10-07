@@ -11,13 +11,13 @@ router.post('/beer/', createBeer);
 router.put('/beer/:id',updateBeer);
 router.delete('/beer/:id',deleteBeer);
 
-// REST route handlers
+// apply CRUD method to HTTP REQ(REST) 
 async function getBeer(req,res){
 
-  let allBeer = await Beer.findAll();
+  let beer = await Beer.read();
 
-  console.log('***beer FOUND: ', allbeer)
-  res.status(200).json(allBeer)
+  console.log(' *** beer FOUND --> ', beer)
+  res.status(200).json(beer)
 
 }
 
@@ -26,7 +26,7 @@ async function createBeer(req,res){
   let beerData = req.body;
   let beer = await Beer.create(beerData);
 
-  console.log(`***beer: ${beer} CREATED`);
+  console.log(` *** beer --> ${beer} CREATED`);
   res.status(200).json(beer);
 
 }
@@ -34,9 +34,10 @@ async function createBeer(req,res){
 async function getOneBeer(req,res){
 
   const id = parseInt(req.params.id);
-  let beer = await Beer.findOne({ where:{id:id} });
+
+  let beer = await Beer.read(id);
   
-  console.log(`***ONE beer: ${beer} FOUND: `, beer)
+  console.log(`*** ONE beer: ${beer} FOUND: `, beer)
   res.status(200).json(beer);
 
 }
@@ -45,10 +46,10 @@ async function updateBeer(req,res){
   const beerId = parseInt(req.params.id);
   const beerObject = req.body;
 
-  const beerData = await beer.findOne({ where: {id:beerId}} );
+  const beerData = await Beer.findOne({ where: {id:beerId}} );
   let updatedBeer = await beerData.update(beerObject);
 
-  res.status(200).send(updatedBeer);
+  res.status(200).json(updatedBeer);
 }
 
 async function deleteBeer(req,res){
