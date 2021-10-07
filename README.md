@@ -16,10 +16,25 @@
 
 ### 🏠 [GitHub Repo](https://github.com/antoni909/api-server)
 
-### ✨ [Heroku Production Deployment](https://api-server.herokuapp.com/)
+### ✨ [Heroku Production Deployment](https://collections-api-server.herokuapp.com/)
+
+### Routes
+
+Endpoint:
+
+  ```sh
+    /beer
+  
+    /liqor
+  ```
+
+### UML
+
+![UML api-server](./assets/UML_collections-api-server.jpg)
 
 ### Techonology used in this Project
 
+```sh
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
@@ -28,6 +43,43 @@
     "sequelize": "^6.6.5",
     "sqlite3": "^5.0.2",
     "supertest": "^6.1.3"
+```
+
+CRUD and REST methods:
+
+CRUD Operation: Create
+REST Method: POST
+Path: /beer
+    - Input: JSON Object in the Request Body
+    - Returns: The record that was added to the database.
+    - You must generate an ID and attach it to the object.
+    - You should verify that only the fields you define get saved as a record.
+    - Get All Records
+
+CRUD Operation: Read
+REST Method: GET
+Path: /beer
+    - Returns: An array of objects, each object being one entry from your database.
+    - Get One Record
+
+CRUD Operation: Read
+REST Method: GET
+Path: /beer/1
+    - Returns: The object from the database, which has the id matching that which is in the path.
+    - Update A Record
+
+CRUD Operation: Update
+REST Method: PUT
+Path: /beer/1
+    - Input: JSON Object in the Request Body
+    - Returns: The object from the database, which has the id matching that which is in the path, with the updated/changed data.
+    - You should verify that only the fields you define get saved as a record.
+    - Delete A Record
+
+CRUD Operation: Destroy
+REST Method: DELETE
+Path: /beer/1
+    - Returns: The record from the database as it exists after you delete it (i.e. null).
 
 ### DOCS USED
 
@@ -40,52 +92,18 @@
 
 [Home Repo](https://github.com/antoni909/api-server)
 
-[PR - dev to main](https://github.com/antoni909/api-server/pull/2)
+[PR - dev to main](https://github.com/antoni909/api-server/pull/5)
 
 [Assignment Instructions - Lab 04](./assignment.md);
 
 [Research Notes](./notes.md)
 
-### Routes
-
-CRUD Operation: Create
-REST Method: POST
-Path: /food
-    - Input: JSON Object in the Request Body
-    - Returns: The record that was added to the database.
-    - You must generate an ID and attach it to the object.
-    - You should verify that only the fields you define get saved as a record.
-    - Get All Records
-
-CRUD Operation: Read
-REST Method: GET
-Path: /food
-    - Returns: An array of objects, each object being one entry from your database.
-    - Get One Record
-
-CRUD Operation: Read
-REST Method: GET
-Path: /food/1
-    - Returns: The object from the database, which has the id matching that which is in the path.
-    - Update A Record
-
-CRUD Operation: Update
-REST Method: PUT
-Path: /food/1
-    - Input: JSON Object in the Request Body
-    - Returns: The object from the database, which has the id matching that which is in the path, with the updated/changed data.
-    - You should verify that only the fields you define get saved as a record.
-    - Delete A Record
-
-CRUD Operation: Destroy
-REST Method: DELETE
-Path: /food/1
-    - Returns: The record from the database as it exists after you delete it (i.e. null).
-
 ### Install
 
 ```sh
+
 npm i
+
 ```
 
 ### Usage
@@ -99,9 +117,7 @@ npm run dev
 ```sh
 npm run test
 ```
-### UML
 
-![UML api-server](./assets/uml.jpg)
 ### Author
 
 👤 **Lorenzo Ortega**
