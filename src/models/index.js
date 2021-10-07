@@ -12,7 +12,7 @@ const POSTGRES_URI =
     ? 'sqlite:memory' 
     : process.env.DATABASE_URL;
 
-console.log(' *** POSTGRES_URI : ', POSTGRES_URI)
+// console.log(' *** POSTGRES_URI : ', POSTGRES_URI)
 
 let sequelizeOptions = process.env.NODE_ENV === 'production'
     ? {

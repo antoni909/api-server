@@ -12,35 +12,71 @@ const request = supertest(server.app);
 beforeAll(async () => {
   await db.sync();
 });
+
 afterAll(async () => {
   await db.drop();
 });
 
 describe('web server', () => {
 
-  it('should respond with a 404 on an invalid method', async () => {
+  it('can respond with a 404 on an invalid method', async () => {
     const response = await request.put('/hello');
     expect(response.status).toBe(404);
   });
 
   it('can add a record', async () => {
-    const response = await 
+    const response = await request.post('/beer').send({
+      name: 'test',
+      calories: 100,
+      size: 16,
+    })
+
+    expect(response.status).toEqual(200);
+    expect(response.body.name).toEqual('test');
+    expect(response.body.calories).toEqual(100);
+    expect(response.body.size).toEqual(16);
 
   });
 
   it('can get a list of records', async () => {
 
+    const response = await request.get('/beer')
+    expect(response.status).toEqual(200);
+    expect(response.body).toBeTruthy();
+
   });
 
   it('can get a record', async () => {
 
+    const response = await request.get('/beer/1');
+    expect(response.status).toEqual(200);
+    expect(response.body.name).toEqual('test');
+  
   });
 
-  it('can update a record', async () => {
+  // it('can update a record', async () => {
 
-  });
+  //   const data = {
+  //     name: 'test',
+  //     calories: 100,
+  //     size: 16,
+  //   }
+
+  //   const response = await request.put(data).send(data);
+
+  //   expect(response.status).toBe(200);
+  //   expect(response.body).toBeTruthy();
+  //   expect(typeof response.body).toEqual('object');
+  //   expect(response.body.name).toEqual('test');
+  //   expect(response.body.calories).toEqual(100);
+  //   expect(response.body.size).toEqual(16);
+
+  // });
 
   it('can delete a record', async () => {
+
+    const response = await request.delete('/beer/1');
+    expect(response.status).toBe(204);
 
   });
 
