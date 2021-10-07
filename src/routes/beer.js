@@ -15,8 +15,7 @@ router.delete('/beer/:id',deleteBeer);
 async function getBeer(req,res){
 
   let beer = await Beer.read();
-
-  console.log(' *** beer FOUND --> ', beer)
+  // console.log(' *** beer FOUND --> ', beer)
   res.status(200).json(beer)
 
 }
@@ -25,8 +24,7 @@ async function createBeer(req,res){
 
   let beerData = req.body;
   let beer = await Beer.create(beerData);
-
-  console.log(` *** beer --> ${beer} CREATED`);
+  // console.log(` *** beer --> ${beer} CREATED`);
   res.status(200).json(beer);
 
 }
@@ -34,29 +32,30 @@ async function createBeer(req,res){
 async function getOneBeer(req,res){
 
   const id = parseInt(req.params.id);
-
   let beer = await Beer.read(id);
-  
-  console.log(`*** ONE beer: ${beer} FOUND: `, beer)
+  // console.log(`*** ONE beer: ${beer} FOUND: `, beer)
   res.status(200).json(beer);
 
 }
 
 async function updateBeer(req,res){
+
   const beerId = parseInt(req.params.id);
   const beerObject = req.body;
 
-  const beerData = await Beer.findOne({ where: {id:beerId}} );
+  const beerData = await Beer.findOne(beerId);
   let updatedBeer = await beerData.update(beerObject);
-
   res.status(200).json(updatedBeer);
+
 }
 
 async function deleteBeer(req,res){
-  const id = parseInt(req.params.id);
-  let deletedBeer = await Beer.destroy({ where: { id:id } } );
-  console.log(`***beer ${deletedBeer} DELETED: `, deletedBeer)
+
+  const beerId = parseInt(req.params.id);
+  let deletedBeer = await Beer.delete(beerId);
+  // console.log(`***beer ${deletedBeer} DELETED: `, deletedBeer)
   res.status(204).json(deletedBeer);
+
 }
 
 module.exports = router;

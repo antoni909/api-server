@@ -4,9 +4,8 @@ class Collection{
   constructor(name,model){
     this.name = name;
     this.model = model;
-    console.log(this.model)
+    // console.log('this.model: ',this.model)
   }
-
 
   async create(json){
     try{
@@ -24,7 +23,7 @@ class Collection{
 
   async read(id, options = {}){
     let record;
-    console.log('id:',id, 'options: ', options)
+    // console.log('id:',id, 'options: ', options)
     try{
       
       if(id){
