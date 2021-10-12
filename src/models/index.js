@@ -4,7 +4,8 @@
 require('dotenv').config();
 const { Sequelize, DataTypes } = require('sequelize');
 const Collection = require('../utils/collections-class');
-const beer = require('../models/beer');
+const beerSchema = require('../models/beer');
+const customerSchema = require('../models/customer');
 
 // connect to a db 
 const POSTGRES_URI = 
@@ -26,12 +27,15 @@ let sequelizeOptions = process.env.NODE_ENV === 'production'
     : {};
 
 let sequelize = new Sequelize(POSTGRES_URI, sequelizeOptions);
+let beerModel = beerSchema(sequelize, DataTypes);
+let customerModel = customerSchema(sequelize, DataTypes);
 
-let beerModel = beer(sequelize, DataTypes);
 
-let collectionBeer = new Collection('Beer', beerModel  );
+let beerCollection = new Collection('beer', beerModel  );
+let customerCollection = new Collection('customer', customerModel  );
 
 module.exports = {
   db: sequelize,
-  Beer: collectionBeer,
+  Customer: customerCollection,
+  Beer: beerCollection,
 };

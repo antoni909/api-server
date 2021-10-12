@@ -1,27 +1,19 @@
 
 'use strict';
-// can import dependencies
-const express = require('express');
-// initialize
-const app = express();
 
-// Middleware Imports
+const express = require('express');
+const app = express();
 const notFoundHandler = require('./error-handlers/404');
 const serverErrorHandler = require('./error-handlers/500');
 const beerRouter = require('./routes/beer');
+const customerRouter = require('./routes/customer');
 
-// allows express to consume json
 app.use(express.json());
-//Resource Routers
 app.use(beerRouter);
-
-// App level middleware
-
-// Post Routes Error Handling Middleware
+app.use(customerRouter);
 app.use('*',notFoundHandler);
 app.use(serverErrorHandler);
 
-// export server
 module.exports = {
   app: app,
   start: port => {

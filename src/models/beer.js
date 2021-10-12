@@ -1,6 +1,6 @@
 'use strict'
 
-const Beer = (sequelize, DataTypes) => sequelize.define('Beer',{
+const Beer = (sequelize, DataTypes) => sequelize.define('beer',{
   name: {
     type: DataTypes.STRING,
     allowNull: false,

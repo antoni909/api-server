@@ -54,24 +54,24 @@ describe('web server', () => {
   
   });
 
-  // it('can update a record', async () => {
+  xit('can update a record', async () => {
 
-  //   const data = {
-  //     name: 'test',
-  //     calories: 100,
-  //     size: 16,
-  //   }
+    const data = {
+      name: 'new test',
+      calories: 100,
+      size: 16,
+    }
 
-  //   const response = await request.put(data).send(data);
+    const response = await request.put('/beer/1', data);
 
-  //   expect(response.status).toBe(200);
-  //   expect(response.body).toBeTruthy();
-  //   expect(typeof response.body).toEqual('object');
-  //   expect(response.body.name).toEqual('test');
-  //   expect(response.body.calories).toEqual(100);
-  //   expect(response.body.size).toEqual(16);
+    expect(response.status).toBe(200);
+    expect(response.body).toBeTruthy();
+    expect(typeof response.body).toEqual('object');
+    expect(response.body.name).toEqual('new test');
+    expect(response.body.calories).toEqual(100);
+    expect(response.body.size).toEqual(16);
 
-  // });
+  });
 
   it('can delete a record', async () => {
 

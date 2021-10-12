@@ -43,8 +43,7 @@ async function updateBeer(req,res){
   const beerId = parseInt(req.params.id);
   const beerObject = req.body;
 
-  const beerData = await Beer.findOne(beerId);
-  let updatedBeer = await beerData.update(beerObject);
+  let updatedBeer = await Beer.update(beerId,beerObject);
   res.status(200).json(updatedBeer);
 
 }
