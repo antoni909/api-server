@@ -25,7 +25,7 @@ Endpoint:
   ```sh
     /beer
   
-    /liqor
+    /customer
   ```
 
 ### UML
